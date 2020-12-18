@@ -4,7 +4,7 @@ const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
 var engine, world;
-var car,ground1,ground2,ground3,ground4,ground5,ground6,ground7,ground8;
+var car,ground1,ground2,ground3,ground4,ground5,ground6,ground7,ground8,ground9;
 var bg = "sprites/bg1.png";
 var score = 0;
 
@@ -16,7 +16,8 @@ function setup(){
     var canvas = createCanvas(1200,750);
     engine = Engine.create();
     world = engine.world;
-car=new Box(50,150,20,20);
+    
+car=new Wheel(50,150,20);
 ground1=new Ground(100,460,200,PI/2);
 ground2=new Ground(240,420,100,PI/4);
 ground3=new Ground(1100,460,200,PI/2);
@@ -25,6 +26,9 @@ ground5=new Ground(685,400,100,PI/2);
 ground6=new Ground(780,323,100,PI/3);  
 ground7=new Ground(280,350,100,PI/12)
 ground8=new Ground(280,275,100,-PI/11)
+ground9=new Ground(200,160,100,PI/2);
+
+Matter.Body.setVelocity(ground9.body,4)
 }
 
 function draw(){
@@ -42,9 +46,10 @@ function draw(){
    ground6.display();
    ground7.display()
    ground8.display()
+   ground9.display()
 if(keyIsDown(68)){
     
-    Matter.Body.applyForce(car.body,car.body.position,{x:10,y:0})
+    Matter.Body.applyForce(car.body,car.body.position,{x:15,y:0})
 
 }
 }
