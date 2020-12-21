@@ -4,13 +4,13 @@ const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
 var engine, world;
-var car,ground1,ground2,ground3,ground4,ground5,ground6,ground7,ground8,ground9;
+var car,ground1,ground2,ground3,ground4,ground5,ground6,ground7,ground8,ground9,ground10,ground11,ground12,ground13 ;
 var bg = "sprites/bg1.png";
 var score = 0;
 var v = 10;
 var  backgroundImage;
 function preload() {
-  backgroundImage=loadImage("boom.jpg") 
+  backgroundImage=loadImage("boi.jpg") 
 }
 
 function setup(){
@@ -28,6 +28,10 @@ ground6=new Ground(780,323,100,PI/3);
 ground7=new Ground(280,350,100,PI/12)
 ground8=new Ground(280,275,100,-PI/11)
 ground9=new Ground(200,160,100,PI/2);
+ground10=new Ground(5,375,750,PI)
+ground11=new Ground(1195,375,750,PI)
+ground12=new Ground(600,5,1200,PI/2);
+ground13=new Ground(600,745,1200,PI/2);
 Matter.Body.setStatic(ground9.body,false)
 Matter.Body.setVelocity(ground9.body,{x:4,y:0})
 }
@@ -48,19 +52,33 @@ function draw(){
    ground7.display()
    ground8.display()
    ground9.display()
+   ground10.display()
+   ground11.display()
+   ground12.display()
+ground13.display()
 
 if(keyIsDown(68)){
     
-    Matter.Body.applyForce(car.body,car.body.position,{x:15,y:0})
+    Matter.Body.applyForce(car.body,car.body.position,{x:10,y:0})
 
 }
-if(ground9.body.position.x<0){
+if(keyIsDown(32)&&car.body.position.y>428){
+    
+  Matter.Body.applyForce(car.body,car.body.position,{x:0,y:-50})
+
+}
+if(keyIsDown(65)){
+    
+  Matter.Body.applyForce(car.body,car.body.position,{x:-10,y:0})
+
+}
+if(ground9.body.position.x<80){
   v=10
 }
-if(ground9.body.position.x>1200){
+if(ground9.body.position.x>1110){
 v=-10
 }
-Matter.Body.setPosition(ground9.body,{x:ground9.body.position.x+v,y:160})
+Matter.Body.setPosition(ground9.body,{x:ground9.body.position.x+v,y:155})
 
 }
 //function keyPressed(){
